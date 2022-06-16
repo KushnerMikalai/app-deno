@@ -1,5 +1,15 @@
 # Deno App - Deno RESTful apis
 
+<img src="https://deno.land/images/deno_logo_4.gif" alt="logo" width="300"/>
+
+This is a simple project Deno RESTful APIs using
+[Oak](https://deno.land/x/oak) and [deno_mongo](https://deno.land/x/mongo)
+
+### Features
+
+- Model, Controller, Service based project structure
+- Denon Integration
+
 ## Setup
 
 ### Install denon
