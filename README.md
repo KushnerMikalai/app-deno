@@ -8,6 +8,7 @@ This is a simple project Deno RESTful APIs using
 ### Features
 
 - Model, Controller, Service based project structure
+- CORS
 - Denon Integration
 
 ## Setup

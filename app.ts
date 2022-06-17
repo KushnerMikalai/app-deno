@@ -1,34 +1,26 @@
-import { Application, Context } from "./deps.ts";
+import { Application, oakCors } from "./deps.ts";
+import configs from "./config/config.ts";
+import router from "./routers/index.ts";
 
-const app = new Application();
+const { port, clientUrl } = configs;
 
-// Logger
-app.use(async (ctx: Context, next) => {
-  await next();
-  const rt = ctx.response.headers.get("X-Response-Time");
-  console.log(`${ctx.request.method} ${ctx.request.url} - ${rt}`);
-});
+const app: Application = new Application();
 
-// Timing
-app.use(async (ctx: Context, next) => {
-  const start = Date.now();
-  await next();
-  const ms = Date.now() - start;
-  ctx.response.headers.set("X-Response-Time", `${ms}ms`);
-});
+const corsOptions = {
+  "origin": clientUrl,
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 200,
+  "credentials": true,
+};
 
-// // Hello World!
-app.use((ctx: Context) => {
-  ctx.response.body = `<!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <title>App Deno</title>
-      <head>
-      <body>
-        <h1>Hello oak!</h1>
-      </body>
-    </html>
-  `;
-});
+app.use(oakCors(corsOptions));
 
-await app.listen({ port: 8000 });
+router.init(app);
+
+if (import.meta.main) {
+  console.log(port, 'port')
+  await app.listen({ port });
+}
+
+export { app };
