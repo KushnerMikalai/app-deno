@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Admin Deno",
+    "email": "nickolaikushner@gmail.com",
+    "password": "111111",
+    "role": "admin",
+    "isDisabled": false
+  }
+]

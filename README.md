@@ -28,3 +28,11 @@ Terminal path must be project directory's root path**
 ```
 deno cache --reload --unstable --lock-write --lock=lock.json ./deps.ts
 ```
+
+### RUN
+
+In your project root open terminal and run following command to run the project
+
+```
+denon start
+```
